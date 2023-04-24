@@ -4,6 +4,8 @@ import android.app.Service
 import android.content.Intent
 import android.os.IBinder
 import android.os.RemoteException
+import android.os.SystemClock
+import android.util.Log
 import com.example.aidlserver.IMyAidlInterface
 import java.security.SecureRandom
 
@@ -15,6 +17,12 @@ class MyService : Service() {
     }
 
     inner class MyBinder : IMyAidlInterface.Stub() {
+
+        override fun getAirWindSpeed(port: Int, address: Int, index: Int, exp: String): List<String> {
+            //
+            val list = listOf("123", "abc", "456", "def")
+            return list
+        }
 
         override fun getStr(): String {
             return "20230323test"
